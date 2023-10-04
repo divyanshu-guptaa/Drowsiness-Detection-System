@@ -14,8 +14,8 @@ reye = cv2.CascadeClassifier('haar cascade files\haarcascade_righteye_2splits.xm
 model = load_model('my_new_model.keras')
 cap = cv2.VideoCapture(0)
 score=0
-rpred = []
-lpred = []
+rpred = [99]
+lpred = [99]
 
 while(True):
     ret, frame = cap.read()
@@ -38,7 +38,6 @@ while(True):
         r_eye = cv2.resize(r_eye,(299,299),3)
         r_eye= r_eye/255.0
         r_eye = np.array(r_eye)
-        r_eye.shape
         r_eye=  np.reshape(r_eye,[1,299,299,3])
         rpred = model.predict(r_eye)
         break
